@@ -8,24 +8,26 @@ console.log(getUserNames(users));
 
 //Задача 2
 const getUsersWithEyeColor = (users, color) => {
-  return users.filter(user => user.eyeColor === color);
+  const result = users.filter(user => user.eyeColor === color);
+  return result;
 };
 console.log(getUsersWithEyeColor(users, "blue"));
 // [объект Moore Hensley, объект Sharlene Bush, объект Carey Barr]
 
 //Задача 3
 const getUsersWithGender = (users, gender) => {
-  const showGender = users.filter(user => user.gender === gender);
-  return showGender.map(showGender => showGender.name);
+  const result = users
+    .filter(user => user.gender === gender)
+    .map(user => user.name);
+  return result;
 };
 console.log(getUsersWithGender(users, "male"));
 // [ 'Moore Hensley', 'Ross Vazquez', 'Carey Barr', 'Blackburn Dotson' ]
 
 //Задача 4
 const getInactiveUsers = users => {
-  return users.filter(users => users.isActive === false);
+  return users.filter(users => !users.isActive);
 };
-
 console.log(getInactiveUsers(users));
 // [объект Moore Hensley, объект Ross Vazquez, объект Blackburn Dotson]
 
@@ -51,7 +53,6 @@ console.log(getUsersWithAge(users, 30, 40));
 // [объект Moore Hensley, объект Sharlene Bush, объект Blackburn Dotson, объект Sheree Anthony]
 
 //Задача 7
-
 const calculateTotalBalance = users => {
   return users.reduce((totalBalance, user) => totalBalance + user.balance, 0);
 };
@@ -70,11 +71,11 @@ console.log(getUsersWithFriend(users, "Goldie Gentry"));
 //[ 'Elma Head', 'Sheree Anthony']
 
 //Задача 9
-
 const getNamesSortedByFriendsCount = users => {
-  const friendsCount = users.filter(users => (users.friends = users.friends.length));
-  const sorted = friendsCount.sort((a, b) => a.friends - b.friends);
-  return sorted.map(sorted => sorted.name);
+  const result = users
+    .sort((a, b) => a.friends.length - b.friends.length)
+    .map(users => users.name);
+  return result;
 };
 console.log(getNamesSortedByFriendsCount(users));
 //[ 'Moore Hensley', 'Sharlene Bush', 'Elma Head', 'Carey Barr', 'Blackburn Dotson', 'Sheree Anthony', 'Ross Vazquez' ]
